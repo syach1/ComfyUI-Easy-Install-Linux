@@ -632,10 +632,26 @@ find . -type f -name "*.bat" -delete
 # Make all .sh files executable
 find . -type f -name "*.sh" -exec chmod +x {} +
 
-# Install Triton for Torch 2.9 (Linux only)
+# Install Triton matching the bundled Linux Torch stack
 if [ "$(uname -s)" = "Linux" ]; then
-    echo -e "${GREEN}::::::::::::::: Installing ${YELLOW}Triton${GREEN} :::::::::::::::${RESET}"
-    $EMBEDDED_PYTHON -m pip install --upgrade --force-reinstall "triton" $PIP_ARGS || echo -e "${YELLOW}Triton install skipped${RESET}"
+    TORCH_MAJOR_MINOR=$($EMBEDDED_PYTHON -c "import torch; print(torch.__version__.split('+')[0].rsplit('.', 1)[0])" 2>/dev/null || true)
+    case "$TORCH_MAJOR_MINOR" in
+        "2.7")
+            TRITON_SPEC="triton==3.3.0"
+            ;;
+        "2.8")
+            TRITON_SPEC="triton==3.4.0"
+            ;;
+        "2.9")
+            TRITON_SPEC="triton==3.5.0"
+            ;;
+        *)
+            TRITON_SPEC="triton"
+            ;;
+    esac
+
+    echo -e "${GREEN}::::::::::::::: Installing ${YELLOW}${TRITON_SPEC}${GREEN} :::::::::::::::${RESET}"
+    $EMBEDDED_PYTHON -m pip install --upgrade --force-reinstall "$TRITON_SPEC" $PIP_ARGS || echo -e "${YELLOW}Triton install skipped${RESET}"
     echo ""
 fi
 
