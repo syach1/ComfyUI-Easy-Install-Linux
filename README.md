@@ -61,11 +61,6 @@ For a fresh install on this fork, use this order:
    ./run_nvidia_gpu.sh
    ```
 
-Extra local docs:
-
-- `ComfyUI-Easy-Install/GUIDE.md`
-- `ComfyUI-Easy-Install/HISTORY.md`
-
 ## 📦 Included Components
 
 <details>
@@ -166,4 +161,3 @@ bash Add-Ons/backup_comfyui.sh
 Enjoy my projects? Any support is greatly appreciated!
 
 </div>
-
