@@ -2,18 +2,69 @@
 
 # ComfyUI-Easy-Install
 
-Portable **ComfyUI** for **macOS** and **Linux** 🔹 Pixaroma Community Edition  
-[![GitHub Release](https://img.shields.io/github/v/release/Tavris1/ComfyUI-Easy-Install)](https://github.com/Tavris1/ComfyUI-Easy-Install/releases/latest/download/ComfyUI-Easy-Install.zip)
-[![GitHub Release Date](https://img.shields.io/github/release-date/Tavris1/ComfyUI-Easy-Install?style=flat)](https://github.com/Tavris1/ComfyUI-Easy-Install/releases)
-[![GitHub All Releases](https://img.shields.io/github/downloads/Tavris1/ComfyUI-Easy-Install/total.svg)](https://github.com/Tavris1/ComfyUI-Easy-Install/releases)
-[![GitHub Downloads Latest](https://img.shields.io/github/downloads/Tavris1/ComfyUI-Easy-Install/latest/total?style=flat&label=⬇+latest&color=orange)](https://github.com/Tavris1/ComfyUI-Easy-Install/releases/latest/download/ComfyUI-Easy-Install.zip)
+Linux-focused **ComfyUI** fork for **CachyOS / Arch-style NVIDIA setups**  
+[![GitHub Release](https://img.shields.io/github/v/release/syach1/ComfyUI-Easy-Install-Linux)](https://github.com/syach1/ComfyUI-Easy-Install-Linux/releases)
+[![GitHub Release Date](https://img.shields.io/github/release-date/syach1/ComfyUI-Easy-Install-Linux?style=flat)](https://github.com/syach1/ComfyUI-Easy-Install-Linux/releases)
+[![GitHub All Releases](https://img.shields.io/github/downloads/syach1/ComfyUI-Easy-Install-Linux/total.svg)](https://github.com/syach1/ComfyUI-Easy-Install-Linux/releases)
+[![GitHub Downloads Latest](https://img.shields.io/github/downloads/syach1/ComfyUI-Easy-Install-Linux/latest/total?style=flat&label=latest&color=orange)](https://github.com/syach1/ComfyUI-Easy-Install-Linux/releases)
 
-Dedicated to the **Pixaroma** team  
+Fork maintained by **syach1**  
+Based on the original work from **Tavris1**, **VenimK**, and the **Pixaroma** community.  
 [![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdiscord.com%2Fapi%2Finvites%2FgggpkVgBf3%3Fwith_counts%3Dtrue&query=%24.approximate_member_count&logo=discord&logoColor=white&label=Join%20Pixaroma%20Discord&color=FFDF00&suffix=%20users)](https://discord.com/invite/gggpkVgBf3)
 
 </div>
 
 ---
+
+## Fork Status
+
+> [!IMPORTANT]
+> This fork is maintained for **Linux only**.
+> It was tested on **CachyOS** with an **NVIDIA RTX 4060 Ti 16GB**.
+> The stable Trellis2 path in this fork is:
+> - **Python 3.12**
+> - **Torch 2.7.0 + cu128**
+> - **flash-attn** enabled
+> - **Trellis2** installed through the patched Linux add-on scripts in this repo
+>
+> This fork is primarily maintained for **Trellis2 on Linux**.
+> Because Trellis2 has specific Torch, CUDA, and native-extension requirements, this install is best treated as a **dedicated Trellis2 environment**.
+> Other custom nodes or workflows may still work, but they are **not broadly tested or officially supported** in this fork.
+
+> [!NOTE]
+> This fork documents and supports the Linux path only.
+
+## Recommended Linux Path
+
+For a fresh install on this fork, use this order:
+
+1. Run the top-level bootstrap:
+   ```bash
+   ./ComfyUI-Easy-Install.sh
+   ```
+2. Enter the nested runtime folder:
+   ```bash
+   cd ComfyUI-Easy-Install
+   ```
+3. Install the stable Torch runtime:
+   ```bash
+   ./Add-Ons/Torch-Pack/Torch2.7.0+cu128.sh
+   ```
+4. Install Trellis2:
+   ```bash
+   cd Add-Ons
+   ./Trellis2.sh
+   cd ..
+   ```
+5. Start ComfyUI:
+   ```bash
+   ./run_nvidia_gpu.sh
+   ```
+
+Extra local docs:
+
+- `ComfyUI-Easy-Install/GUIDE.md`
+- `ComfyUI-Easy-Install/HISTORY.md`
 
 ## 📦 Included Components
 
@@ -25,21 +76,6 @@ Dedicated to the **Pixaroma** team
 | [Git](https://git-scm.com/) | ![Git version](https://img.shields.io/github/v/tag/git/git?label=&display_name=tag&color=blue) - Latest (will install/update if needed) |
 | [Python](https://www.python.org/downloads/release/python-31210/) | ![Python version](https://img.shields.io/badge/3.12.10-blue) - Built from source |
 | [ComfyUI](https://github.com/Comfy-Org/ComfyUI) | ![ComfyUI version](https://img.shields.io/github/v/release/Comfy-Org/ComfyUI?label=&display_name=tag) - Latest version |
-
-</details>
-
-<details>
-<summary><b>Nodes from Pixaroma tutorials</b></summary>
-
-| 🖼️ Image | 🎬 Video | 🎵 Audio | 🧩 Utility / WF | 🤖 Models |
-|---|---|---|---|---|
-| [Tiled Diffusion & VAE](https://github.com/shiimizu/ComfyUI-TiledDiffusion) | [VideoHelperSuite](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite) | [MelBandRoFormer](https://github.com/kijai/ComfyUI-MelBandRoFormer) | [ComfyUI Manager](https://github.com/Comfy-Org/ComfyUI-Manager) | [QwenVL](https://github.com/1038lab/ComfyUI-QwenVL) |
-| [Inpaint CropAndStitch](https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch) | [WanVideoWrapper](https://github.com/kijai/ComfyUI-WanVideoWrapper) | [Qwen3-TTS](https://github.com/flybirdxx/ComfyUI-Qwen-TTS) | [Easy-Use](https://github.com/yolain/ComfyUI-Easy-Use) | [GGUF](https://github.com/city96/ComfyUI-GGUF) |
-| [ControlNet Aux](https://github.com/Fannovel16/comfyui_controlnet_aux) | [WanAnimatePreprocess](https://github.com/kijai/ComfyUI-WanAnimatePreprocess) | | [KJNodes](https://github.com/kijai/ComfyUI-KJNodes) | |
-| [LayerStyle](https://github.com/chflame163/ComfyUI_LayerStyle) | [SeedVR2 VideoUpscaler](https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler) | | [rgthree](https://github.com/rgthree/rgthree-comfy) | |
-| [RMBG](https://github.com/1038lab/ComfyUI-RMBG) | | | [iTools](https://github.com/MohammadAboulEla/ComfyUI-iTools) | |
-| [Easy-Sam3](https://github.com/yolain/ComfyUI-Easy-Sam3) | | | [ControlAltAI Nodes](https://github.com/gseth/ControlAltAI-Nodes) | |
-| [SCAIL-Pose](https://github.com/kijai/ComfyUI-SCAIL-Pose) | | | [TeaCache](https://github.com/welltop-cn/ComfyUI-TeaCache) | |
 
 </details>
 
@@ -56,119 +92,55 @@ Dedicated to the **Pixaroma** team
 
 </details>
 
-## 🍎 macOS Installation
+## 🐧 Linux Installation
 
 1. Clone this repository:
    ```bash
-   git clone --single-branch --branch MAC-Linux https://github.com/Tavris1/ComfyUI-Easy-Install.git
+   git clone https://github.com/syach1/ComfyUI-Easy-Install-Linux.git
    ```
-2. Make the script executable and run it:
+2. Run the top-level bootstrap:
    ```bash
-   cd ComfyUI-Easy-Install
+   cd ComfyUI-Easy-Install-Linux
    chmod +x ComfyUI-Easy-Install.sh
    ./ComfyUI-Easy-Install.sh
    ```
-3. After installation, start ComfyUI:
+3. Enter the nested runtime folder and install the stable Torch runtime:
    ```bash
    cd ComfyUI-Easy-Install
-   ./run_mac_mps.sh
+   ./Add-Ons/Torch-Pack/Torch2.7.0+cu128.sh
    ```
-4. After setup, you can install the following from the **Add-ons** folder:
-    - **Easy-Models-Linker** - *Uses existing **MODELS** folder via **extra_model_paths.yaml**, no re-download needed*
-      - *Some folders like **LLM** and **llm_gguf** cannot be redirected this way*
-    - **Nunchaku** - *Installs Nunchaku*
-    - **SageAttention** - *Installs SageAttention v2.2.0*
-    - **InsightFace** - *Installs InsightFace (Pretrained models for non-commercial research only)*
-    - **Trellis2** - *Installs Trellis 2.0*
-    - **Torch-Pack** - *Quick switching between: `Torch 2.7.1+cu128`, `Torch 2.8.0+cu128` and `Torch 2.9.1+cu130`*
-    - **ComfyUI-Version-Switcher** - ***Reversible** rollback to a **previous** ComfyUI version on issues*
-    - **Backup ComfyUI** - *Backup, restore, and manage your ComfyUI data folders*
-
-<details>
-<summary><b>Mac M1/M2 Optimization</b></summary>
-
-The `run_mac_mps.sh` script includes optimizations for Apple Silicon (M1/M2) Macs:
-
-- **Memory Management** - Memory clearing, optimized GC, configurable MPS watermark ratios
-- **Performance** - MPS graph mode, descriptor caching, unified memory support
-- **Compatibility** - FP32 accumulation, force-upcast attention, Float8 disabled (unsupported on MPS)
-
-</details>
-
-<details>
-<summary><b>Troubleshooting macOS</b></summary>
-
-- **Import Failures** - Some nodes may fail due to Apple Silicon incompatibility. Check console output and remove non-essential nodes.
-- **Memory Issues** - Adjust `PYTORCH_MPS_HIGH_WATERMARK_RATIO` / `PYTORCH_MPS_LOW_WATERMARK_RATIO` in `run_mac_mps.sh`, use smaller models, reduce batch sizes.
-- **Performance** - Use GGUF models, prefer smaller models (7B over 13B), avoid CPU-intensive nodes.
-
-</details>
-
-> [!TIP]
-> - Multiple ComfyUI installs allowed without conflicts.
-> - You can rename/move `ComfyUI-Easy-Install` folder after installation.
-
----
-
-## 🐧 Linux and Proxmox Installation
-
-<details>
-<summary><b>Standard Linux Installation</b></summary>
-
-1. Clone this repository:
+4. Install Trellis2:
    ```bash
-   git clone -b MAC-Linux --single-branch https://github.com/Tavris1/ComfyUI-Easy-Install.git
+   cd Add-Ons
+   ./Trellis2.sh
+   cd ..
    ```
-2. Make the script executable and run it:
+5. Start ComfyUI:
    ```bash
-   cd ComfyUI-Easy-Install
-   chmod +x ComfyUI-Easy-Install.sh
-   ./ComfyUI-Easy-Install.sh
-   ```
-3. After installation, start ComfyUI:
-   ```bash
-   cd ComfyUI-Easy-Install
    ./run_nvidia_gpu.sh
    ```
 
-</details>
+Recommended add-ons for this fork:
 
-<details>
-<summary><b>Proxmox LXC Container Setup</b></summary>
+- **Easy-Models-Linker**
+- **Nunchaku**
+- **SageAttention**
+- **InsightFace**
+- **Trellis2**
+- **Torch-Pack**
+- **ComfyUI-Version-Switcher**
+- **Backup ComfyUI**
 
-1. Clone this repository:
-   ```bash
-   git clone -b MAC-Linux --single-branch https://github.com/Tavris1/ComfyUI-Easy-Install.git
-   ```
-2. Make all scripts executable:
-   ```bash
-   cd ComfyUI-Easy-Install
-   chmod +x *.sh
-   ```
-3. Setup Container - Install ComfyUI in the container - GPU Passthrough:
-   ```bash
-   ./comfyui-lxc-standalone.sh
-   ```
-
-**Hardware Requirements**: At least 8GB RAM · NVMe SSD recommended · GPU passthrough (optional)
-
-</details>
-
-<details>
-<summary><b>Troubleshooting Linux / Proxmox</b></summary>
-
-> For Linux/Proxmox support, contact [@VenimK](https://discord.com/users/venimk) on Discord
+Troubleshooting:
 
 - **Permission Errors**: `chmod -R 755 ComfyUI-Easy-Install`
-- **Performance**: Use NVMe for model storage, configure container resources, consider GPU passthrough
-
-</details>
-
-> [!NOTE]
-> The Proxmox setup automatically configures most settings, but you may need to adjust container resources based on your needs.
+- **Trellis2 ABI/runtime issues**: use `Add-Ons/Torch-Pack/Torch2.7.0+cu128.sh`, then rerun `Add-Ons/Trellis2.sh`
+- **o_voxel import issues**: run `Add-Ons/Trellis2-Build-OVoxel.sh`
 
 > [!TIP]
-> - [**For Windows installation click here**](https://github.com/Tavris1/ComfyUI-Easy-Install)
+> - Multiple ComfyUI installs are allowed without conflicts.
+> - You can rename or move the nested `ComfyUI-Easy-Install` folder after installation.
+> - See `ComfyUI-Easy-Install/GUIDE.md` for the full first-time walkthrough.
 
 <details>
 <summary><b>Backup ComfyUI</b></summary>
@@ -176,7 +148,7 @@ The `run_mac_mps.sh` script includes optimizations for Apple Silicon (M1/M2) Mac
 A small interactive utility to back up, restore, and manage your ComfyUI data folders.
 
 - **Script**: `Add-Ons/backup_comfyui.sh`
-- **Version**: V2.01.3 (Pixaroma Community Edition, macOS/Linux by VenimK)
+- **Version**: V2.01.3 (Pixaroma Community Edition, Linux by VenimK)
 - **Backup location**: `~/ComfyUI_Backups/ComfyUI_backup_YYYYMMDD_HHMMSS`
 - **What gets backed up**: `user`, `input`, `output` (always) · `models` (optional)
 
@@ -192,9 +164,6 @@ bash Add-Ons/backup_comfyui.sh
 
 ## ❤️ Support Me
 Enjoy my projects? Any support is greatly appreciated!
-
-[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/VenimK)
-[![GitHub Sponsors](https://img.shields.io/badge/Sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white)](https://github.com/sponsors/venimK)
 
 </div>
 
