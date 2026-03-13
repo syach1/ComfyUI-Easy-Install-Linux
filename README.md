@@ -34,33 +34,6 @@ Based on the original work from **Tavris1**, **VenimK**, and the **Pixaroma** co
 > [!NOTE]
 > This fork documents and supports the Linux path only.
 
-## Recommended Linux Path
-
-For a fresh install on this fork, use this order:
-
-1. Run the top-level bootstrap:
-   ```bash
-   ./ComfyUI-Easy-Install.sh
-   ```
-2. Enter the nested runtime folder:
-   ```bash
-   cd ComfyUI-Easy-Install
-   ```
-3. Install the stable Torch runtime:
-   ```bash
-   ./Add-Ons/Torch-Pack/Torch2.7.0+cu128.sh
-   ```
-4. Install Trellis2:
-   ```bash
-   cd Add-Ons
-   ./Trellis2.sh
-   cd ..
-   ```
-5. Start ComfyUI:
-   ```bash
-   ./run_nvidia_gpu.sh
-   ```
-
 ## 📦 Included Components
 
 <details>
@@ -91,11 +64,11 @@ For a fresh install on this fork, use this order:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/syach1/ComfyUI-Easy-Install-Linux.git
+   git clone https://github.com/syach1/ComfyUI-Easy-Trellis2-Linux.git
    ```
 2. Run the top-level bootstrap:
    ```bash
-   cd ComfyUI-Easy-Install-Linux
+   cd ComfyUI-Easy-Trellis2-Linux
    chmod +x ComfyUI-Easy-Install.sh
    ./ComfyUI-Easy-Install.sh
    ```
@@ -114,17 +87,6 @@ For a fresh install on this fork, use this order:
    ```bash
    ./run_nvidia_gpu.sh
    ```
-
-Recommended add-ons for this fork:
-
-- **Easy-Models-Linker**
-- **Nunchaku**
-- **SageAttention**
-- **InsightFace**
-- **Trellis2**
-- **Torch-Pack**
-- **ComfyUI-Version-Switcher**
-- **Backup ComfyUI**
 
 Troubleshooting:
 
