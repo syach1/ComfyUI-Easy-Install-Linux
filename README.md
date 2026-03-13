@@ -1,6 +1,6 @@
 <div align="center">
 
-# ComfyUI-Easy-Install
+# ComfyUI-Easy-Trellis2-Linux
 
 Linux-focused **ComfyUI** fork for **CachyOS / Arch-style NVIDIA setups**  
 [![GitHub Release](https://img.shields.io/github/v/release/syach1/ComfyUI-Easy-Install-Linux)](https://github.com/syach1/ComfyUI-Easy-Install-Linux/releases)
