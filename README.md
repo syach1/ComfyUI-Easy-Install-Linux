@@ -75,7 +75,7 @@ Based on the original work from **Tavris1**, **VenimK**, and the **Pixaroma** co
 3. Enter the nested runtime folder and install the stable Torch runtime:
    ```bash
    cd ComfyUI-Easy-Install
-   ./Add-Ons/Torch-Pack/Torch2.7.0+cu128.sh
+   ./Add-Ons/Torch-Pack/Torch2.7.0+cu128_(CachyOS+Trellis2+FlashAttn).sh
    ```
 4. Install Trellis2:
    ```bash
