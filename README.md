@@ -3,10 +3,10 @@
 # ComfyUI-Easy-Trellis2-Linux
 
 Linux-focused **ComfyUI** fork for **CachyOS / Arch-style NVIDIA setups**  
-[![GitHub Release](https://img.shields.io/github/v/release/syach1/ComfyUI-Easy-Install-Linux)](https://github.com/syach1/ComfyUI-Easy-Install-Linux/releases)
-[![GitHub Release Date](https://img.shields.io/github/release-date/syach1/ComfyUI-Easy-Install-Linux?style=flat)](https://github.com/syach1/ComfyUI-Easy-Install-Linux/releases)
-[![GitHub All Releases](https://img.shields.io/github/downloads/syach1/ComfyUI-Easy-Install-Linux/total.svg)](https://github.com/syach1/ComfyUI-Easy-Install-Linux/releases)
-[![GitHub Downloads Latest](https://img.shields.io/github/downloads/syach1/ComfyUI-Easy-Install-Linux/latest/total?style=flat&label=latest&color=orange)](https://github.com/syach1/ComfyUI-Easy-Install-Linux/releases)
+[![GitHub Release](https://img.shields.io/github/v/release/syach1/ComfyUI-Easy-Trellis2-Linux)](https://github.com/syach1/ComfyUI-Easy-Trellis2-Linux/releases)
+[![GitHub Release Date](https://img.shields.io/github/release-date/syach1/ComfyUI-Easy-Trellis2-Linux?style=flat)](https://github.com/syach1/ComfyUI-Easy-Trellis2-Linux/releases)
+[![GitHub All Releases](https://img.shields.io/github/downloads/syach1/ComfyUI-Easy-Trellis2-Linux/total.svg)](https://github.com/syach1/ComfyUI-Easy-Trellis2-Linux/releases)
+[![GitHub Downloads Latest](https://img.shields.io/github/downloads/syach1/ComfyUI-Easy-Trellis2-Linux/latest/total?style=flat&label=latest&color=orange)](https://github.com/syach1/ComfyUI-Easy-Trellis2-Linux/releases)
 
 Fork maintained by **syach1**  
 Based on the original work from **Tavris1**, **VenimK**, and the **Pixaroma** community.  
@@ -74,8 +74,8 @@ Based on the original work from **Tavris1**, **VenimK**, and the **Pixaroma** co
    ```
 3. Enter the nested runtime folder and install the stable Torch runtime:
    ```bash
-   ❯ cd ComfyUI-Easy-Install/Add-Ons/Torch-Pack
-     ./Torch2.7.0+cu128_\(CachyOS+Trellis2+FlashAttn\).sh 
+   cd ComfyUI-Easy-Install
+   ./Add-Ons/Torch-Pack/Torch2.7.0+cu128.sh
    ```
 4. Install Trellis2:
    ```bash

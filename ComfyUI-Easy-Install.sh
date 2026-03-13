@@ -381,17 +381,15 @@ EOL
     $EMBEDDED_PYTHON -m pip install uv==0.9.7 $PIP_ARGS
     echo -e "${GREEN}✓${RESET} uv installed"
     
-    echo -e "${YELLOW}[2/6]${RESET} Installing PyTorch 2.9.1..."
-    # Check if running on macOS and install appropriate PyTorch
+    echo -e "${YELLOW}[2/6]${RESET} Installing PyTorch..."
     if [ "$(uname)" = "Darwin" ]; then
         echo -e "${YELLOW}Installing PyTorch 2.9.1 for macOS (CPU/MPS)...${RESET}"
-        # For macOS, install without CUDA index
         uv pip install $UV_ARGS torch==2.9.1 torchvision==0.24.1 torchaudio==2.9.1
         echo -e "${GREEN}✓${RESET} PyTorch installed (macOS version)"
     else
-        echo -e "${YELLOW}Installing PyTorch 2.9.1 + CUDA 13.0...${RESET}"
-        uv pip install $UV_ARGS torch==2.9.1 torchvision==0.24.1 torchaudio==2.9.1 --index-url https://download.pytorch.org/whl/cu130
-        echo -e "${GREEN}✓${RESET} PyTorch installed (CUDA version)"
+        echo -e "${YELLOW}Installing PyTorch 2.7.0 + CUDA 12.8 for Linux/Trellis2...${RESET}"
+        uv pip install $UV_ARGS torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/cu128
+        echo -e "${GREEN}✓${RESET} PyTorch installed (Linux Trellis2 baseline)"
     fi
     
     echo -e "${GREEN}::::::::::::::: ${YELLOW}Pre-installation of required modules${GREEN} :::::::::::::::${RESET}"
@@ -418,13 +416,13 @@ EOL
         echo -e "${YELLOW}Installing llama-cpp-python v0.3.24 with Metal support for macOS...${RESET}"
         CMAKE_ARGS="-DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_APPLE_SILICON_PROCESSOR=arm64 -DGGML_METAL=on" uv pip install --upgrade --force-reinstall "llama-cpp-python @ git+https://github.com/JamePeng/llama-cpp-python.git" $UV_ARGS
     else
-        # Linux version - try different CUDA versions
+        # Linux version - prefer the same CUDA 12.8 runtime as the Trellis2 baseline
         echo -e "${YELLOW}Installing llama-cpp-python v0.3.24 with CUDA support for Linux...${RESET}"
         
-        # Try CUDA 13.0 first
-        uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.24-cu130-Basic-linux-20260208/llama_cpp_python-0.3.24+cu130.basic-cp312-cp312-linux_x86_64.whl $UV_ARGS || {
-            # Fallback to CUDA 12.8
-            uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.24-cu128-Basic-linux-20260208/llama_cpp_python-0.3.24+cu128.basic-cp312-cp312-linux_x86_64.whl $UV_ARGS || {
+        # Try CUDA 12.8 first
+        uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.24-cu128-Basic-linux-20260208/llama_cpp_python-0.3.24+cu128.basic-cp312-cp312-linux_x86_64.whl $UV_ARGS || {
+            # Fallback to CUDA 13.0
+            uv pip install https://github.com/JamePeng/llama-cpp-python/releases/download/v0.3.24-cu130-Basic-linux-20260208/llama_cpp_python-0.3.24+cu130.basic-cp312-cp312-linux_x86_64.whl $UV_ARGS || {
                 # Final fallback to source build
                 echo -e "${YELLOW}Falling back to source build with CUDA...${RESET}"
                 CMAKE_ARGS="-DGGML_CUDA=on" uv pip install --upgrade --force-reinstall "llama-cpp-python @ git+https://github.com/JamePeng/llama-cpp-python.git" $UV_ARGS || {
