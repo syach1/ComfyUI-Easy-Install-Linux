@@ -31,6 +31,13 @@ Based on the original work from **Tavris1**, **VenimK**, and the **Pixaroma** co
 > Because Trellis2 has specific Torch, CUDA, and native-extension requirements, this install is best treated as a **dedicated Trellis2 environment**.
 > Other custom nodes or workflows may still work, but they are **not broadly tested or officially supported** in this fork.
 
+> [!TIP]
+> On the tested Linux path, `flash-attn` is installed and validated automatically by:
+> - `Add-Ons/Torch-Pack/Torch2.7.0+cu128.sh`
+> - `Add-Ons/Trellis2.sh`
+>
+> You do not need to install it separately for the recommended Trellis2 setup.
+
 > [!NOTE]
 > This fork documents and supports the Linux path only.
 
@@ -88,11 +95,33 @@ Based on the original work from **Tavris1**, **VenimK**, and the **Pixaroma** co
    ./run_nvidia_gpu.sh
    ```
 
+What this path does:
+
+- installs the tested `torch 2.7.0 + cu128` runtime
+- installs and validates the pinned Linux `flash-attn` wheel used by this fork
+- installs Trellis2 with the patched Linux wheel-selection and `o_voxel` fallback logic
+- skips optional Linux `nvdiffrec_render` source builds when no compatible wheel is bundled
+
+Expected success signals:
+
+- `pytorch version: 2.7.0+cu128`
+- `[SPARSE] Conv backend: flex_gemm; Attention backend: flash_attn`
+- `[ATTENTION] Using backend: flash_attn`
+- `Import times for custom nodes: ... ComfyUI-Trellis2`
+
 Troubleshooting:
 
 - **Permission Errors**: `chmod -R 755 ComfyUI-Easy-Install`
 - **Trellis2 ABI/runtime issues**: use `Add-Ons/Torch-Pack/Torch2.7.0+cu128.sh`, then rerun `Add-Ons/Trellis2.sh`
 - **o_voxel import issues**: run `Add-Ons/Trellis2-Build-OVoxel.sh`
+
+Known non-fatal warnings:
+
+- `NumbaWarning: The TBB threading layer ... is disabled`
+- `_POSIX_C_SOURCE redefined`
+- Open3D optional dependency warnings about `dash`, `flask`, `ipywidgets`, `nbformat`, `pandas`, or `werkzeug`
+- `FETCH ComfyRegistry Data: ...`
+- browser-side deprecation warnings from older ComfyUI extensions
 
 > [!TIP]
 > - Multiple ComfyUI installs are allowed without conflicts.
